@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const CreateProduct = ({onAdd}) => {
+const CreateProduct = ({onAdd,categories}) => {
 
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
@@ -55,10 +55,12 @@ const CreateProduct = ({onAdd}) => {
             </div>
             <div className='form-control'>
                 <label>Category</label>
-                <input type='text' placeholder='Choose Category'
-                       value={category}
-                       onChange={(e)=>setCategory(e.target.value)}
-                />
+                <select name="category" onChange={(e)=>setCategory(e.target.value)}>
+                    {categories.map((category) =>
+                            <option value={category.name}>{category.name}</option>
+                        )
+                    }
+                </select>
             </div>
             <div className='form-control'>
                 <label>Price</label>

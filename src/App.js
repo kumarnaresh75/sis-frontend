@@ -6,9 +6,17 @@ import {useState} from "react";
 
 const App = () => {
 
+
+
     const [showAddProduct, setShowAddProduct] = useState(false)
 
     const headers = ['id','description','expiry','category','price','special']
+
+    const categories = [
+        {id:1, name:'Diary'},
+        {id:2, name:'Cosmetics'},
+        {id:3, name:'Gardening'}
+    ]
 
     const [products, setProducts] = useState(
         [
@@ -44,7 +52,7 @@ const App = () => {
   return (
     <div className="container">
       <Header onAdd={() => setShowAddProduct(!showAddProduct)} showCreate={showAddProduct} />
-        {showAddProduct && <CreateProduct onAdd={addProduct}/>}
+        {showAddProduct && <CreateProduct onAdd={addProduct} categories={categories}/>}
       <Products products={products}  headers={headers} onDelete={deleteProduct}/>
     </div>
   );
